@@ -1,100 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🏡 Real Estate Analytics Dashboard</title>
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}🏡 PRASAD Real Estate Dashboard{% endblock %}
+{% block content %}
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/> 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/> 
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-  <nav class="navbar navbar-light bg-white shadow-sm mb-5">
-    <div class="container">
-      <a class="navbar-brand text-primary fw-bold" href="/">
-        <i class="fas fa-home"></i>🏡 RealEstate Analytics</a>
-    </div>
-  </nav>
+<div class="container mt-4">
+  <h1 class="text-center mb-4">
+    <i class="fas fa-chart-line"></i> 🏡 PRASAD Real Estate Dashboard
+  </h1>
+  <p class="text-center text-muted mb-5" style="font-size: 1.1rem;">
+    Market Insights • Property Listings • Sales Trends
+  </p>
 
-  <div class="container mt-4">
-    <h1 class="text-center mb-4">
-      <i class="fas fa-chart-line"></i>🏡 Real Estate Dashboard
-    </h1>
-    <p class="text-center text-muted mb-5" style="font-size: 1.1rem;">
-      Market Insights • Property Listings • Sales Trends
-    </p>
-
-    <div class="row g-4 mb-5">
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5><i class="fas fa-building"></i> Total Properties</h5>
-            <p class="display-6">{{ total_properties }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5><i class="fas fa-exchange-alt"></i> Transactions</h5>
-            <p class="display-6">{{ total_transactions }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5><i class="fas fa-rupee-sign"></i> Avg Sale Price</h5>
-            <p class="display-6">₹{{ "{:,.2f}".format(avg_sale_price) }}</p>
-          </div>
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h5><i class="fas fa-building"></i> Total Properties</h5>
+          <p class="display-6">{{ total_properties }}</p>
         </div>
       </div>
     </div>
 
-    <div class="text-center my-5">
-      <a href="/properties" class="btn btn-success btn-lg mx-2 px-4">
-        <i class="fas fa-list"></i> View Properties
-      </a>
-      <a href="/reports" class="btn btn-info btn-lg mx-2 px-4 text-white">
-        <i class="fas fa-chart-bar"></i> Analytics Reports
-      </a>
-      <a href="/export" class="btn btn-warning btn-lg mx-2 px-4 text-dark">
-        <i class="fas fa-file-csv"></i> Export Data
-      </a>
-    </div>
-
-    <div class="text-center mt-5">
-      <p class="text-muted mb-3">Connect With Us</p>
-      <div class="d-flex justify-content-center gap-4" style="font-size: 1.5rem;">
-        <a href="https://facebook.com" target="_blank" class="text-primary">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://twitter.com" target="_blank" class="text-info">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://linkedin.com" target="_blank" class="text-primary">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://instagram.com" target="_blank" class="text-danger">
-          <i class="fab fa-instagram"></i>
-        </a>
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h5><i class="fas fa-exchange-alt"></i> Transactions</h5>
+          <p class="display-6">{{ total_transactions }}</p>
+        </div>
       </div>
     </div>
 
-    <footer class="mt-5 pt-4 border-top text-center text-muted">
-      <p>
-        <i class="fas fa-copyright"></i>🏡 2025 RealEstate Analytics. All rights reserved.<br>
-        Designed for professional presentation.
-      </p>
-    </footer>
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h5><i class="fas fa-rupee-sign"></i> Avg Sale Price</h5>
+          <p class="display-6">₹{{ "{:,.2f}".format(avg_sale_price) }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <div class="text-center my-5">
+    <a href="{{ url_for('properties') }}" class="btn btn-success btn-lg mx-2 px-4">
+      <i class="fas fa-list"></i> View Properties
+    </a>
+    <a href="{{ url_for('reports') }}" class="btn btn-info btn-lg mx-2 px-4 text-white">
+      <i class="fas fa-chart-bar"></i> Analytics Reports
+    </a>
+    <a href="{{ url_for('export') }}" class="btn btn-warning btn-lg mx-2 px-4 text-dark">
+      <i class="fas fa-file-csv"></i> Export Data
+    </a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title text-center">Get In Touch</h2>
+
+      <div class="row align-items-start mt-4">
+        <div class="col-md-6">
+          <div class="contact-info">
+            <div class="info-item d-flex mb-3">
+              <i class="fas fa-map-marker-alt fa-2x me-3 text-primary"></i>
+              <div>
+                <h5>Our Office</h5>
+                <p>ABC, Hyderabad, 520038</p>
+              </div>
+            </div>
+            <div class="info-item d-flex mb-3">
+              <i class="fas fa-phone-alt fa-2x me-3 text-success"></i>
+              <div>
+                <h5>Call Us</h5>
+                <p><a href="tel:+919398528767">+91 9398528767</a></p>
+              </div>
+            </div>
+            <div class="info-item d-flex mb-3">
+            <i class="fab fa-whatsapp fa-2x me-3 text-success"></i>
+            <div>
+            <h5>WhatsApp</h5>
+            <p><a href="https://wa.me/919398528767?text=Hello%21%20Thank%20you%20for%20contacting%20Prasad%20Real%20Estate.%20How%20can%20I%20help%20you%3F" 
+            target="_blank">Chat with us</a></p>
+            </div>
+            </div>
+            <div class="info-item d-flex">
+              <i class="fas fa-envelope fa-2x me-3 text-danger"></i>
+              <div>
+                <h5>Email Us</h5>
+                <p><a href="mailto:prasad@gmail.com">prasad@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="map-container">
+            <h5>Our Location</h5>
+            <a href="https://www.google.com/maps/place/PSR+Towers+beside+DLF,+Gachibowli" target="_blank">
+            <img src="{{ url_for('static', filename='images/building-psr-towers-beside-dlf-gachibowli.png') }}" 
+            alt="Location Map" class="img-fluid rounded shadow"/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

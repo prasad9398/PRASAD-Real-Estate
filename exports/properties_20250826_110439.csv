@@ -1,0 +1,10 @@
+property_id,address,city,state,zip_code,price,bedrooms,bathrooms,sqft,listing_date,agent_id
+1,123 Main Street,Hyderabad,TS,520038,1500000.0,3,2,1800,2025-08-20,1
+2,456 Pine Ave,Vijayawada,AP,520010,520000.0,4,3,2200,2025-08-22,2
+3,789 Elm Blvd,Hyderabad,TS,520000,380000.0,3,2,1600,2025-09-05,1
+4,321 Maple Ln,Visakhapatnam,AP,520020,410000.0,3,2,1700,2025-01-01,3
+5,654 Main Street,Hyderabad,TS,520030,600000.0,5,4,3000,2025-09-10,2
+6,987 Main Rood,Vijayawada,AP,520040,350000.0,2,2,1400,2025-08-20,3
+7,123 HITEC City,Hyderabad,TS,500081,450000.0,3,2,1800,2025-09-10,1
+8,456 Gachibowli,Hyderabad,TS,500301,520000.0,4,3,2200,2025-09-15,2
+9,789 Jubilee Hills,Hyderabad,TS,500401,595000.0,5,4,3000,2023-05-18,2

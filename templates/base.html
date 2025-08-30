@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Real Estate App{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">PRASAD RealEstate</a>
+        {% if session.get('user_id') %}
+        <div>
+          <a class="btn btn-sm btn-outline-light" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        {% endif %}
+      </div>
+    </nav>
+
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, msg in messages %}
+            <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+              {{ msg }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </div>
+
+<footer class="footer bg-light text-dark pt-4 mt-5 border-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <h5 class="fw-bold text-primary">
+          <i class="fas fa-home"></i> 🏡 PRASAD Real Estate
+        </h5>
+        <p class="small text-muted">
+          Smart Real Estate Analytics Platform providing insights, property listings, and trends.
+        </p>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h6 class="fw-bold">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="{{ url_for('dashboard') }}" class="text-decoration-none text-dark">Dashboard</a></li>
+          <li><a href="{{ url_for('properties') }}" class="text-decoration-none text-dark">Properties</a></li>
+          <li><a href="{{ url_for('reports') }}" class="text-decoration-none text-dark">Reports</a></li>
+          <li><a href="{{ url_for('export') }}" class="text-decoration-none text-dark">Export Data</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h6 class="fw-bold">Follow Us</h6>
+        <div class="d-flex gap-3 social-icons">
+          <a href="https://wa.me/919398528767?text=Hello%21%20Thank%20you%20for%20contacting%20Prasad%20Real%20Estate.%20How%20can%20I%20help%20you%3F" 
+             target="_blank" class="whatsapp text-success" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.google.com" target="_blank" class="google" aria-label="Google"><i class="fab fa-google"></i></a>
+          <a href="https://www.facebook.com" target="_blank" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.twitter.com" target="_blank" class="twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com" target="_blank" class="linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr style="border-color: #151515; margin: 10px 0;">
+    <div class="payment-methods mb-3 text-center">
+      <i class="fab fa-cc-visa fa-lg me-2"></i>
+      <i class="fab fa-cc-mastercard fa-lg me-2"></i>
+      <i class="fas fa-rupee-sign fa-lg me-2"></i>
+      <i class="fab fa-paypal fa-lg"></i>
+    </div>
+
+    <hr style="border-color: #151515; margin: 10px 0;">
+    <div class="text-center pb-3">
+      <p class="mb-0 small text-muted">
+        © 2025 🏡 PRASAD Real Estate Analytics. All Rights Reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
