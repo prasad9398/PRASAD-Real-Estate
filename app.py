@@ -14,7 +14,7 @@ app.secret_key = "supersecretkey"
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'Prasad@123',  
+    'password': 'YOUR PASSWORD',  
     'database': 'real_estate'
 }
 
