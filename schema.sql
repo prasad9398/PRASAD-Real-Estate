@@ -16,6 +16,15 @@ create table Buyers (
     budget decimal(10,2)
 );
 
+create table enquiries(
+    enquiry_id INT AUTO_INCREMENT primary key,
+    name varchar(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(15),
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
+
 create table Properties (
     property_id INT AUTO_INCREMENT primary key,
     address varchar(200) NOT NULL,
@@ -28,6 +37,7 @@ create table Properties (
     sqft INT,
     listing_date DATE,
     agent_id INT,
+    image_url varchar(255),
     foreign key (agent_id) REFERENCES Agents(agent_id)
 );
 
@@ -41,4 +51,5 @@ create table Transactions (
     foreign key (property_id) REFERENCES Properties(property_id),
     foreign key (buyer_id) REFERENCES Buyers(buyer_id),
     foreign key (agent_id) REFERENCES Agents(agent_id)
+
 );
